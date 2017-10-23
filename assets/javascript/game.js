@@ -74,8 +74,14 @@ $(document).ready(function()
 	
 	function compareFunction(userClickValue)
 	{
+		var userClickValue = parseInt(userClickValue);
 		userscore += userClickValue;
+
+
 		$(".currentscore").text(userscore);
+
+
+
 
 		if (userscore === random)
 		{
@@ -91,13 +97,22 @@ $(document).ready(function()
 		{
 			$(".currentscore").text("Sorry you lose");
 			losses++;
-
 		}
+		winslossesrecord()
 
 		// dont forget compare function for equal to, greater then or less then for the user score
 		// also do the win loss function
 		// do a reset function but outside this portion
 	};
+
+	function winslossesrecord()
+	{
+		$(".gamecounter").html(wins);
+		$(".gamecounter2").html(losses);
+
+
+
+	}
 
 	function resetGame()
 	{
