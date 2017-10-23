@@ -20,9 +20,11 @@ $(document).ready(function()
 	$("#gem2").attr("value", random2);
 	$("#gem3").attr("value", random3);
 	$("#gem4").attr("value", random4);
+	maincomponent();
 
 
-
+	function maincomponent()
+	{
 
 	$("#buttonGenerator").on("click", function() 
 	{
@@ -66,6 +68,8 @@ $(document).ready(function()
 
 	});
 
+	}
+
 
 	// make your compare function here
 	//	we put compare function in each click on the gem icon
@@ -79,10 +83,15 @@ $(document).ready(function()
 
 
 		$(".currentscore").text(userscore);
+		winslossesrecord()
 
+		// dont forget compare function for equal to, greater then or less then for the user score
+		// also do the win loss function
+		// do a reset function but outside this portion
+	};
 
-
-
+	function winslossesrecord()
+	{
 		if (userscore === random)
 		{
 			$(".currentscore").text("You Win!");
@@ -98,26 +107,19 @@ $(document).ready(function()
 			$(".currentscore").text("Sorry you lose");
 			losses++;
 		}
-		winslossesrecord()
 
-		// dont forget compare function for equal to, greater then or less then for the user score
-		// also do the win loss function
-		// do a reset function but outside this portion
-	};
-
-	function winslossesrecord()
-	{
-		$(".gamecounter").html(wins);
-		$(".gamecounter2").html(losses);
+		$(".winsection").html("You have " + wins+ " wins");
+		$(".losssection").html("You have " + losses+ " losses");
 
 
 
 	}
 
-	function resetGame()
+	$("#resetbutton").on("click", function()
 	{
-
-	}
+		maincomponent.reset();
+  	});
+	
 
 });
 
